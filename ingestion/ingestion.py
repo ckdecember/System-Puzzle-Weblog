@@ -33,30 +33,24 @@ channel.queue_declare(queue='log-analysis')
 f = open('weblogs.log', mode='r', encoding='utf-8', errors='ignore')
 
 while True:
-#    try:
+    try:
+        msg = f.readline()
 
-
-    msg = f.readline()
-
-    if not msg:
-        break
+        if not msg:
+            break
         #If message is GET request, ingest it into the queue
-    if is_get_request(msg):
-
-#            if type(msg) == unicode:
-#                tmpdata = bytearray(msg, 'utf-8')
-#                msg = bytes(tmpdata)
+        if is_get_request(msg):
 
             # Parse GET request for relevant information
-        day, status, source = parse_log(msg)
+            day, status, source = parse_log(msg)
 
             # Store in RabbitMQ
-        body = json.dumps({'day': str(day), 'status': status})
-        channel.basic_publish(exchange='',
+            body = json.dumps({'day': str(day), 'status': status})
+            channel.basic_publish(exchange='',
                               routing_key='log-analysis',
                               body=body)
         
-#    except:
-#        print("Unexpected error:{}".format(sys.exc_info()[0]))
+    except:
+        print("Unexpected error:{}".format(sys.exc_info()[0]))
     
 connection.close()
