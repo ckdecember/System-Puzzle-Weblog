@@ -1,11 +1,13 @@
 # System Puzzle Weblog
 
 # Problem
-A system using Postgresql, RabbitMQ, nginx, Python, and docker.  RabbitMQ is ingesting weblog files and storing the results in Postgresql. nginx and flask are used as the frontend to display the percentage of GET requests in the logs were successful.
+A system using Postgresql, RabbitMQ, nginx, Python, and docker.  RabbitMQ is ingesting weblog files and storing the results in Postgresql. nginx and flask are used as the frontend to display the percentage of GET requests in the logs were successful.  
 
-The creator of this system is new to the technologies utilized and needs help troubleshooting it.  This project corrects the errors so it is working, but does not complete the extra credit component (yet).
+The creator of this system is new to the technologies utilized and needs help troubleshooting it.  
 
-For more information:  https://github.com/InsightDataScience/System-Puzzle-Weblog
+Also added support for local / remote statistics of GET requests.  
+
+For more information:  https://github.com/InsightDataScience/System-Puzzle-Weblog  
 
 
 # List of uncovered problems
